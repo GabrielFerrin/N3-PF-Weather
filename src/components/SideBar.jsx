@@ -1,6 +1,6 @@
 function SideBar() {
   return (
-    <div className="bg-[#1E213A] w-[459px] min-h-screen py-[42px] relative flex items-center justify-between flex-col gap-[2rem]">
+    <div className="bg-[#1E213A] min-w-[459px] min-h-screen py-[42px] relative flex items-center justify-between flex-col gap-[1.5rem]">
       {/* nav */}
       <div className="flex justify-between px-[42px] w-full">
         <button className="bg-[#6E707A]  text-[16px] w-[161px] h-[40px]">
@@ -11,13 +11,13 @@ function SideBar() {
         </div>
       </div>
       {/* hero */}
-      <div className="h-[325px] w-full bg-cover bg-no-repeat bg-center p-[3rem]"
+      <div className="h-[325px] w-full bg-cover bg-no-repeat bg-center p-[3rem] mt-6"
         style={{ backgroundImage: 'url(cloud-background.svg)' }}>
         <img src="shower.png" alt="Weather icon"
           className="object-contain w-full h-full relative" />
       </div>
       {/* temperature */}
-      <div className="bg-transparent relative flex justify-center items-center h-[150px] w-full">
+      <div className="bg-transparent relative flex justify-center items-center h-[150px] w-full mt-[-1rem]">
         <h2 className="text-[9rem] font-[500] text-white">
           15
           <span className="text-[#88869D] text-[3rem] font-sans font-[400]">

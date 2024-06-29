@@ -9,6 +9,7 @@ const WeatherProvider = ({ children }) => {
   const [weather, setWeather] = useState({})
   const [loading, setLoading] = useState(false)
   const [showModal, setShowModal] = useState(false)
+  const [unit, setUnit ] = useState('C')
   const getData = async () => {
     // const url = BASE_URL + 'lat=44.34&lon=10.99&appid=' + API_KEY
     // const rawRes = await fetch(url)
@@ -20,7 +21,8 @@ const WeatherProvider = ({ children }) => {
   }, [])
   return (
     <WeatherContext.Provider value={{
-      weather, loading, setLoading, showModal, setShowModal
+      weather, loading, setLoading, showModal, setShowModal,
+      unit, setUnit
     }}>
       {children}
     </WeatherContext.Provider>
