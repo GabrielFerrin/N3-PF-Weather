@@ -8,6 +8,9 @@
 
       .cls-2 {
         fill: none;
+        stroke: #626475;
+        stroke-miterlimit: 10;
+        stroke-width: .25px;
       }
     </style>
   </defs>
