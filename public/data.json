@@ -1,46 +1,45 @@
 {
   "coord": {
-    "lon": 10.99,
-    "lat": 44.34
+    "lon": -80.7174,
+    "lat": -0.9535
   },
   "weather": [
     {
-      "id": 800,
-      "main": "Clear",
-      "description": "clear sky",
-      "icon": "01n"
+      "id": 804,
+      "main": "Clouds",
+      "description": "overcast clouds",
+      "icon": "02n"
     }
   ],
   "base": "stations",
   "main": {
-    "temp": 293.15,
-    "feels_like": 293.32,
-    "temp_min": 291.08,
-    "temp_max": 293.65,
-    "pressure": 1018,
-    "humidity": 81,
-    "sea_level": 1018,
-    "grnd_level": 952
+    "temp": 25,
+    "feels_like": 25.72,
+    "temp_min": 25,
+    "temp_max": 25,
+    "pressure": 1014,
+    "humidity": 83,
+    "sea_level": 1014,
+    "grnd_level": 1012
   },
   "visibility": 10000,
   "wind": {
-    "speed": 2.46,
-    "deg": 208,
-    "gust": 1.51
+    "speed": 4.63,
+    "deg": 200
   },
   "clouds": {
-    "all": 8
+    "all": 100
   },
-  "dt": 1719619717,
+  "dt": 1719719781,
   "sys": {
-    "type": 2,
-    "id": 2004688,
-    "country": "IT",
-    "sunrise": 1719632085,
-    "sunset": 1719687846
+    "type": 1,
+    "id": 8552,
+    "country": "EC",
+    "sunrise": 1719660260,
+    "sunset": 1719703697
   },
-  "timezone": 7200,
-  "id": 3163858,
-  "name": "Zocca",
+  "timezone": -18000,
+  "id": 3650767,
+  "name": "Tarqui",
   "cod": 200
 }

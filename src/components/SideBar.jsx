@@ -3,12 +3,11 @@ import { WeatherContext } from '../context/WeatherProvider'
 import Location from './icons/Location'
 
 function SideBar() {
-  const { setShowModal, location } = useContext(WeatherContext)
+  const { weather, unit, today, setShowModal } = useContext(WeatherContext)
 
-  return (    
+  return (
     <div className="bg-[#1E213A]">
-      {location && <span>{location.latitud}</span>}
-      <div className="w-[459px] h-full max-h-[1100px] py-[42px] relative flex items-center justify-between flex-col gap-[1.5rem] custom-md:w-auto">
+      <div className="w-[459px] max-h-[1100px] py-[42px] relative flex items-center justify-between flex-col gap-[1.5rem] custom-md:w-auto">
         {/* nav */}
         <div className="flex justify-between px-[42px] w-full gap-8">
           <button className="bg-[#6E707A]  text-[16px] w-[161px] h-[40px] hover:bg-[#E7E7EB] hover:text-[#555555] transition duration-300 active:bg-[#b5b5bb] focus:outline-none" onClick={() => setShowModal(true)}>
@@ -21,24 +20,29 @@ function SideBar() {
         {/* hero */}
         <div className="h-[325px] w-full bg-cover bg-no-repeat bg-center p-[3rem] mt-6"
           style={{ backgroundImage: 'url(cloud-background.svg)' }}>
-          <img src="shower.png" alt="Weather icon"
+          <img src={weather.icon} alt="Weather icon"
             className="object-contain w-full h-full relative" />
         </div>
         {/* temperature */}
         <div className="bg-transparent relative flex justify-center items-center h-[150px] w-full mt-[-1rem]">
           <h2 className="text-[9rem] font-[500] text-white">
-            15
+            {weather.temp}
             <span className="text-[#88869D] text-[3rem] font-sans font-[400]">
-              °C
+              °{unit}
             </span>
           </h2>
         </div>
-        <h2 className="text-[2.2rem] font-[600] text-[#88869D] pt-6">Shower</h2>
+        {/* description */}
+        <div className="flex flex-col justify-center items-center">
+          <h2 className="text-[2.2rem] font-[600] text-[#88869D] pt-6">{weather.main}</h2>
+          <h4 className="text-[1rem] font-[600] text-[#88869D]">{weather.description}</h4>
+        </div>
+        {/* footer */}
         <footer className="w-full flex flex-col gap-7 justify-center items-center text-[#88869D] pt-6">
-          <span className="flex gap-3">Today <span>•</span> Fri, 5 Jun</span>
+          <span className="flex gap-3">Today <span>•</span> {today}</span>
           <span className="flex gap-[0.5rem]">
             <img src="location-icon.svg" alt="Location icon" className="w-[14px]" />
-            Helsinki
+            {weather.city}
           </span>
         </footer>
       </div>

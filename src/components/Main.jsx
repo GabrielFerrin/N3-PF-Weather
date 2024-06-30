@@ -6,7 +6,7 @@ import Units from "./Units"
 
 function Main() {
   return (
-    <div className="flex grow-1 p-8">
+    <div className="flex w-[100%] p-8">
       <div className="flex flex-col justify-between h-auto max-w-[720px] mx-auto">
         {/* options */}
         <div className="w-full h-fit flex justify-end gap-3">
@@ -16,11 +16,11 @@ function Main() {
         </div>
         {/* forecast */}
         <div className="flex justify-center flex-wrap gap-7 pt-14">
-          <Forecast date="Tomorrow" icon='shower.png' startTemp={15} endTemp={20} />
-          <Forecast date="Sun, 7 Jun" icon='shower.png' startTemp={15} endTemp={20} />
-          <Forecast date="Mon, 8 Jun" icon='shower.png' startTemp={15} endTemp={20} />
-          <Forecast date="Tue, 9 Jun" icon='shower.png' startTemp={15} endTemp={20} />
-          <Forecast date="Wed, 10 Jun" icon='shower.png' startTemp={15} endTemp={20} />
+          <Forecast date="Tomorrow" icon='02.png' startTemp={15} endTemp={20} />
+          <Forecast date="Sun, 7 Jun" icon='03.png' startTemp={15} endTemp={20} />
+          <Forecast date="Mon, 8 Jun" icon='04.png' startTemp={15} endTemp={20} />
+          <Forecast date="Tue, 9 Jun" icon='11.png' startTemp={15} endTemp={20} />
+          <Forecast date="Wed, 10 Jun" icon='50.png' startTemp={15} endTemp={20} />
         </div>
         {/* hightlights */}
         <div className="flex flex-col gap-6 pt-8 pb-5">
