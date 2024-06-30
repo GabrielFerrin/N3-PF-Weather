@@ -6,11 +6,10 @@ export default {
   ],
   theme: {
     extend: {
-      width: {
-        '885px': '885px'
-      },
       screens: {
-        'custom-md': { 'max': '885px' }
+        'custom-md': { 'max': '885px' },
+        'custom-sm': { 'max': '740px' },
+        'custom-xs': { 'max': '630px' }
       }
     },
   },

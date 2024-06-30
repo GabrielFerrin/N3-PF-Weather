@@ -6,7 +6,7 @@ import Units from "./Units"
 
 function Main() {
   return (
-    <div className="flex grow-1 p-8 w-[calc(100%-116px)]">
+    <div className="flex grow-1 p-8">
       <div className="flex flex-col justify-between h-auto max-w-[720px] mx-auto">
         {/* options */}
         <div className="w-full h-fit flex justify-end gap-3">

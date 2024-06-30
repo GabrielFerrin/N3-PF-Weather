@@ -1,6 +1,8 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
+import { WeatherContext } from "../context/WeatherProvider"
 
 function SideModal() {
+  const { showModal, setShowModal } = useContext(WeatherContext)
   const [selected, setSelected] = useState(false)
   const [selectStyle, setSelectStyle] = useState('')
   const [imgStyle, setImgStyle] = useState('')
@@ -22,16 +24,19 @@ function SideModal() {
   }
 
   return (
-    <div className="absolute w-[459px] h-full max-h-[1100px] bg-[#1E213A] min-h-screen p-[42px] flex items-center flex-col gap-[1.5rem]" onClick={(e) => handleDeselect(e)}>
-      <div className="w-full flex justify-end">
+    <div className="absolute w-[459px] h-full max-h-[1100px] bg-[#1E213A] min-h-screen p-[42px] flex items-center flex-col gap-[1.5rem] custom-md:w-[317px] custom-xs:w-[100%] transition duration-300" style={{
+      left: showModal ? '0' : '-459px',
+      transition: 'left 400ms ease-in-out'
+    }} onClick={(e) => handleDeselect(e)}>
+      <div className="w-full flex justify-end" onClick={() => setShowModal(false)}>
         <img src="close.svg" alt="Close icon" className="w-[32px] h-[32px] cursor-pointer p-[7px] transition duration-300 hover:bg-[#100E1D] rounded-full" />
-      </div>
-      <div className="w-full flex gap-4">
+      </div >
+      <div className="w-full flex gap-4 custom-md:flex-col">
         <div className="relative">
           <input className="pl-12 pr-4 border border-[#616475] focus:outline-none bg-transparent h-[48px] w-full focus:border-[#E7E7EB] transition duration-300 font-[500] [#616475]::placeholder" type="text" placeholder="search location" />
           <img className="absolute w-[24px] p-[3px] top-1/2 translate-y-[-50%] left-4" src="lupa.svg" alt="Search icon" />
         </div>
-        <input type="button" value="Search" className="bg-[#3C47E9]  text-[16px] w-[136px] h-[48px] font-[600]" />
+        <input type="button" value="Search" className="bg-[#3C47E9] text-[16px] w-[136px] h-[48px] font-[600] custom-md:w-auto" />
       </div>
       <div className="w-full flex flex-col">
         <div id="select" className={selectStyle + " flex items-center justify-between px-4 border border-[#616475] focus:outline-none bg-transparent h-[48px] w-full focus:border-[#E7E7EB] transition duration-300 font-[500] cursor-pointer"} onClick={handleSelect}>
