@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react"
-import data from '../../public/data.json'
+import data from '../data.json'
 import filterData from "../services/filterData"
 
 export const WeatherContext = createContext()

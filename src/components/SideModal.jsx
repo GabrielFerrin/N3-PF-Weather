@@ -24,8 +24,8 @@ function SideModal() {
   }
 
   return (
-    <div className="absolute w-[459px] h-full max-h-[1100px] bg-[#1E213A] min-h-screen p-[42px] flex items-center flex-col gap-[1.5rem] custom-md:w-[317px] custom-xs:w-[100%] transition duration-300" style={{
-      left: showModal ? '0' : '-459px',
+    <div className="absolute w-[459px] h-full max-h-[1100px] bg-[#1E213A] min-h-screen p-[42px] flex items-center flex-col gap-[1.5rem] custom-md:w-auto custom-xs:w-[100%] transition duration-300" style={{
+      left: showModal ? '0' : 'calc(-100%)',
       transition: 'left 400ms ease-in-out'
     }} onClick={(e) => handleDeselect(e)}>
       <div className="w-full flex justify-end" onClick={() => setShowModal(false)}>

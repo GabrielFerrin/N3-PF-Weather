@@ -8,7 +8,8 @@ const filterData = (data) => {
   return {
     temp: data.main.temp, icon: data.weather[0].icon.slice(0, 2) + '.png',
     main: data.weather[0].main, city: data.name,
-    description: firstLetterUpper(data.weather[0].description)
+    description: firstLetterUpper(data.weather[0].description),
+    windSpeed: data.wind.speed, windDegree: data.wind.deg
   }
 }
 

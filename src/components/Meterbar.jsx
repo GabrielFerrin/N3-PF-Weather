@@ -12,7 +12,7 @@ function Meterbar({ humidity }) {
         <div className="bg-[#E7E7EB] rounded-full h-2">
           <div className="bg-[#FFEC65] h-2 rounded-full border border-[#9c8d1d]" style={{ width: `${humidity}%` }}></div>
         </div>
-        <span className="flex px-10 justify-end w-full text-[12px] font-[700] text-[#A09FB1]">%</span>
+        <span className="flex justify-end w-full text-[12px] font-[700] text-[#A09FB1]">%</span>
       </div>
     </div>
   )
