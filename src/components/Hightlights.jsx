@@ -7,7 +7,7 @@ function Hightlights({ children, title, value, scale }) {
         <span className="text-[34px] font-[400]">{scale}</span>
       </span>
       {children &&
-        <div>
+        <div className="w-full">
           {children}
         </div>}
     </div>

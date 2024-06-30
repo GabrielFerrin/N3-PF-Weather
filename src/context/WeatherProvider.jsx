@@ -8,7 +8,7 @@ const API_KEY = import.meta.env.VITE_API_KEY
 const WeatherProvider = ({ children }) => {
   const [weather, setWeather] = useState({})
   const [loading, setLoading] = useState(false)
-  const [showModal, setShowModal] = useState(false)
+  const [showModal, setShowModal] = useState(true)
   const [unit, setUnit ] = useState('C')
   const getData = async () => {
     // const url = BASE_URL + 'lat=44.34&lon=10.99&appid=' + API_KEY

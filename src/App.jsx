@@ -5,14 +5,14 @@ import SideModal from "./components/SideModal"
 import Main from "./components/Main"
 
 function App() {
-  const { weather, showModal, setShowModal } = useContext(WeatherContext)
+  const { weather, showModal } = useContext(WeatherContext)
   useEffect(() => {
     console.log(weather)
   }, [weather])
   return (
-    <div className="bg-[#100E1D] text-[#E7E7EB] w-screen min-h-screen flex box-border">
+    <div className="bg-[#100E1D] text-[#E7E7EB] w-full min-h-screen flex relative">
       <SideBar />
-      {showModal && <SideModal />}
+      {/* {showModal && <SideModal />} */}
       <Main />
     </div>
   )

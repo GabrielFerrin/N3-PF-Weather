@@ -7,5 +7,24 @@
   html {
     font-family: 'Raleway', sans-serif;
     overflow-x: hidden;
+    background-color: #0F0E17;
+  }
+  ::-webkit-scrollbar {
+    width: 13px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background: #444444;
+    margin-top: 5px;
+    margin-bottom: 3px;
+  }
+  ::-webkit-scrollbar-thumb {
+    margin-top: 20px;
+    border-radius: 10px;
+    background: #888;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
   }
 }
