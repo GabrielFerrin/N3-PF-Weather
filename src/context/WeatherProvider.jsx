@@ -10,6 +10,7 @@ export const WeatherContext = createContext()
 
 const WeatherProvider = ({ children }) => {
   const [geoLocation, setGeoLocation] = useState({})
+  const [tryCoordinate, setTryCoordinate] = useState({})
   const [weather, setWeather] = useState({})
   const [loading, setLoading] = useState(false)
   const [showModal, setShowModal] = useState(false)
@@ -29,13 +30,30 @@ const WeatherProvider = ({ children }) => {
     }, 6000);
   }
 
+  // try coordinates
+  const getTryCoordinates = async () => {
+    if (!tryCoordinate.latitude || !tryCoordinate.longitude) { return }
+    let res = await fetchWeather(unit, tryCoordinate)
+    if (res.success) {
+      setGeoLocation(tryCoordinate)
+      setShowCoordinates(false)
+      setShowError(false)
+    } else
+      showErrorSnack()
+  }
+  useEffect(() => {
+    getTryCoordinates()
+  }, [tryCoordinate])
+
   // weather / forecast
   const getWeather = async () => {
     if (!geoLocation.latitude || !geoLocation.longitude) { return }
     let res = await fetchWeather(unit, geoLocation)
-    res.success ? setWeather(res.data) : showErrorSnack()
-    if (res.success) {
-      setShowCoordinates(false)
+    if (!res.success) {
+      showErrorSnack()
+      getLocation()
+    } else {
+      setWeather(res.data)
       res = await fetchForecast(unit, geoLocation)
       setForecast(res)
     }
@@ -67,7 +85,7 @@ const WeatherProvider = ({ children }) => {
       weather, forecast, loading, setLoading, showModal, setShowModal,
       unit, setUnit, location: geoLocation, today, setLocation, locations,
       setGeoLocation, showCoordinates, setShowCoordinates, showError,
-      setShowError
+      setShowError, setTryCoordinate
     }}>
       {children}
     </WeatherContext.Provider>

@@ -7,8 +7,8 @@ function SideBar() {
   const { weather, unit, today, setShowModal, showCoordinates, setShowCoordinates } = useContext(WeatherContext)
 
   return (
-    <div className="bg-[#1E213A]">
-      <div className="w-[459px] max-h-[900px] py-[42px] relative flex items-center justify-between flex-col gap-[.5rem] custom-md:w-auto">
+    <div className="bg-[#1E213A] h-auto">
+      <div className="w-[459px] max-h-[1100px] h-screen py-[42px] relative flex items-center justify-between flex-col gap-[.5rem] custom-md:w-auto">
         {/* coordinates modal */}
         {showCoordinates && <Coordinates />}
         {/* nav */}

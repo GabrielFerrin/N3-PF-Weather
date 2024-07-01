@@ -13,9 +13,9 @@ function Main() {
   return (
     <div className="flex w-[100%] p-8">
       <div
-        className="flex flex-col justify-between h-auto max-w-[720px] mx-auto">
+        className="flex flex-col justify-between h-auto max-w-[815px] mx-auto">
         {/* options */}
-        <div className="w-full h-fit flex justify-end gap-3">
+        <div className="w-full h-fit flex justify-end gap-3 custom-md:justify-center">
           <Units elementUnit="C" />
           <Units elementUnit="F" />
           <Units elementUnit="K" />
