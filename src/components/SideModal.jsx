@@ -8,7 +8,7 @@ function SideModal() {
     useContext(WeatherContext)
   const [selected, setSelected] = useState(false)
   const [selectedLocation, setSelectedLocation] =
-    useState('choose...')
+    useState('choose a location...')
   const [selectStyle, setSelectStyle] = useState('')
   const [imgStyle, setImgStyle] = useState('')
   const input = useRef(null)
@@ -32,7 +32,10 @@ function SideModal() {
   const handleClick = () => {
     setLocation(input.current.value.trim())
     input.current.value = ''
-    setSelectedLocation('choose...')
+    setSelectedLocation('choose a location...')
+    setTimeout(() => {
+      setSelected(true)
+    }, 300);
   }
 
   const handleKeyDown = (e) => {
