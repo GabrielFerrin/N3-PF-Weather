@@ -1,6 +1,6 @@
 function Close({ small, action }) {
   const size = small ?
-    "w-[20px] h-[20px] border border-[#E7E7EB] p-[4px]" :
+    "w-[20px] h-[20px] border-[2px] border-[#E7E7EB] p-[4px]" :
     "w-[32px] h-[32px] p-[7px]"
 
   return (

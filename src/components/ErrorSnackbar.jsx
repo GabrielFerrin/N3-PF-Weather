@@ -9,15 +9,17 @@ function ErrorSnackbar({ message }) {
     setShowError(false)
   }
   return (
-    <div className="absolute flex justify-center gap-4 items-center w-[450px] h-[55px] bg-[#ff2929] rounded-md z-50 bg-opacity-90 text-[1.2rem] top-5 custom-sm:w-[340px] custom-sm:text-[1.1rem]"
+    <div className="absolute flex justify-center gap-4 items-center w-[450px] h-[55px] bg-[#ff2929] rounded-md z-50 bg-opacity-90 text-[1.2rem] top-5 custom-sm:w-[340px] custom-sm:text-[1.1rem] font-semibold"
       id='error-snack'
       style={{
         left: '50%', transform: 'translateX(-50%)',
         display: showError ? 'flex' : 'none',
         animation: 'fade 6s ease-out forwards'
       }}>
-      {message}
-      <Close small={true} action={handleAction} />
+      <span className="ml-[-30px]">{message}</span>
+      <div className="absolute right-5 top-[17px]">
+        <Close small={true} action={handleAction} />
+      </div>
     </div>
   )
 }
