@@ -8,7 +8,7 @@ function Units({ elementUnit }) {
 
   return (
     <span onClick={() => setUnit(elementUnit)}
-      className={selectedClass + " font-[700] font-sans text-[18px] h-[40px] w-[40px] flex justify-center items-center cursor-pointer rounded-full pr-1"}>°
+      className={selectedClass + " font-[700] font-sans text-[18px] h-[40px] w-[40px] flex justify-center items-center cursor-pointer rounded-full pr-1 hover:bg-[#E7E7EB] hover:text-[#555555] active:bg-[#b5b5bb] transition duration-300"}>°
       {elementUnit}
     </span>
   )

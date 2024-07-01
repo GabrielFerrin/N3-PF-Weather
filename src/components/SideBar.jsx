@@ -1,19 +1,23 @@
 import { useContext } from 'react'
 import { WeatherContext } from '../context/WeatherProvider'
 import Location from './icons/Location'
+import Coordinates from './Coordinates'
 
 function SideBar() {
-  const { weather, unit, today, setShowModal } = useContext(WeatherContext)
+  const { weather, unit, today, setShowModal, showCoordinates, setShowCoordinates } = useContext(WeatherContext)
 
   return (
     <div className="bg-[#1E213A]">
       <div className="w-[459px] max-h-[1100px] py-[42px] relative flex items-center justify-between flex-col gap-[1.5rem] custom-md:w-auto">
+        {/* coordinates modal */}
+        {showCoordinates && <Coordinates />}
         {/* nav */}
         <div className="flex justify-between px-[42px] w-full gap-8">
-          <button className="bg-[#6E707A]  text-[16px] w-[161px] h-[40px] hover:bg-[#E7E7EB] hover:text-[#555555] transition duration-300 active:bg-[#b5b5bb] focus:outline-none" onClick={() => setShowModal(true)}>
+          <button id='search-btn' className="bg-[#6E707A] text-[16px] w-[161px] h-[40px] hover:bg-[#E7E7EB] hover:text-[#555555] transition duration-300 active:bg-[#b5b5bb] focus:outline-none" onClick={() => setShowModal(true)}>
             Search for places
           </button>
-          <div className="h-[40px] w-[40px] bg-[#6E707A] rounded-full flex justify-center items-center cursor-pointer hover:bg-[#E7E7EB] hover:text-[#555555] active:bg-[#b5b5bb] transition duration-300 p-[9px]">
+          <div id='location' onClick={() => setShowCoordinates(!showCoordinates)}
+            className="h-[40px] w-[40px] bg-[#6E707A] rounded-full flex justify-center items-center cursor-pointer hover:bg-[#E7E7EB] hover:text-[#555555] active:bg-[#b5b5bb] transition duration-300 p-[9px]">
             <Location />
           </div>
         </div>

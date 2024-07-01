@@ -13,26 +13,39 @@ const WeatherProvider = ({ children }) => {
   const [weather, setWeather] = useState({})
   const [loading, setLoading] = useState(false)
   const [showModal, setShowModal] = useState(false)
+  const [showCoordinates, setShowCoordinates] = useState(false)
+  const [showError, setShowError] = useState(false)
   const [unit, setUnit] = useState('C')
   const [today, setToday] = useState(0)
   const [forecast, setForecast] = useState([])
   const [location, setLocation] = useState('')
   const [locations, setLocations] = useState([])
 
+  // error snackbar
+  const showErrorSnack = () => {
+    setShowError(true)
+    setTimeout(() => {
+      setShowError(false)
+    }, 6000);
+  }
+
   // weather / forecast
   const getWeather = async () => {
     if (!geoLocation.latitude || !geoLocation.longitude) { return }
     let res = await fetchWeather(unit, geoLocation)
-    setWeather(res)
-    res = await fetchForecast(unit, geoLocation)
-    setForecast(res)
+    res.success ? setWeather(res.data) : showErrorSnack()
+    if (res.success) {
+      setShowCoordinates(false)
+      res = await fetchForecast(unit, geoLocation)
+      setForecast(res)
+    }
   }
   useEffect(() => { getWeather() }, [geoLocation, unit])
 
   // geolocation / date
   const getLocation = async () => {
-    const loc = await getGPSLocation()
-    setGeoLocation(loc)
+    const res = await getGPSLocation()
+    setGeoLocation(res)
   }
   useEffect(() => {
     setToday(getDate())
@@ -53,7 +66,8 @@ const WeatherProvider = ({ children }) => {
     <WeatherContext.Provider value={{
       weather, forecast, loading, setLoading, showModal, setShowModal,
       unit, setUnit, location: geoLocation, today, setLocation, locations,
-      setGeoLocation
+      setGeoLocation, showCoordinates, setShowCoordinates, showError,
+      setShowError
     }}>
       {children}
     </WeatherContext.Provider>
