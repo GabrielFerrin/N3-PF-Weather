@@ -8,7 +8,7 @@ import Units from "./Units"
 
 function Main() {
   const { weather: { windSpeed, humidity, visibility, airPreasure },
-    forecast } = useContext(WeatherContext)
+    forecast, unit } = useContext(WeatherContext)
 
   return (
     <div className="flex w-[100%] p-8">
@@ -30,7 +30,8 @@ function Main() {
         <div className="flex flex-col gap-6 pt-8 pb-5">
           <h3 className="font-[700] text-[24px]">Today's Hightlights</h3>
           <div className="flex flex-wrap gap-7 justify-center">
-            <Hightlights title='Wind status' value={windSpeed} scale='mph'>
+            <Hightlights title='Wind status'
+              value={windSpeed} scale={unit === 'F' ? 'mi/h' : 'm/s'}>
               <CompasPointer />
             </Hightlights>
             <Hightlights title='Humidity' value={humidity} scale='%' >

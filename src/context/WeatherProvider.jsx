@@ -9,7 +9,10 @@ export const WeatherContext = createContext()
 
 
 const WeatherProvider = ({ children }) => {
-  const [geoLocation, setGeoLocation] = useState({})
+  const [geoLocation, setGeoLocation] = useState({
+    latitude: -0.9535488,
+    longitude: -80.7174144
+  })
   const [tryCoordinate, setTryCoordinate] = useState({})
   const [weather, setWeather] = useState({})
   const [loading, setLoading] = useState(false)

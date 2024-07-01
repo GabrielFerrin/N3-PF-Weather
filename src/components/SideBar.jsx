@@ -8,7 +8,7 @@ function SideBar() {
 
   return (
     <div className="bg-[#1E213A] h-auto">
-      <div className="w-[459px] max-h-[1100px] h-screen py-[42px] relative flex items-center justify-between flex-col gap-[.5rem] custom-md:w-auto">
+      <div className="w-[459px] max-h-[1100px] min-h-[800px] h-screen py-[42px] relative flex items-center justify-between flex-col gap-[.5rem] custom-md:w-auto">
         {/* coordinates modal */}
         {showCoordinates && <Coordinates />}
         {/* nav */}
@@ -24,8 +24,8 @@ function SideBar() {
         {/* hero */}
         <div className="h-[295px] w-full bg-cover bg-no-repeat bg-center p-[4rem] mt-6"
           style={{ backgroundImage: 'url(cloud-background.svg)' }}>
-          <img src={weather.icon} alt="Weather icon"
-            className="object-contain w-full h-full relative" />
+          {weather.temp && <img src={weather.icon} alt="Weather icon"
+            className="object-contain w-full h-full relative" />}
         </div>
         {/* temperature */}
         <div className="bg-transparent relative flex justify-center items-center h-[150px] w-full mt-[-1rem]">

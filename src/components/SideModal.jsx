@@ -72,14 +72,22 @@ function SideModal() {
       {/* search results */}
       {locations.length > 0 &&
         <div className="w-full flex flex-col">
-          <div id="select" className={selectStyle + " flex items-center justify-between px-4 py-2 mb-3 border border-[#616475] focus:outline-none bg-transparent min-h-[48px] w-full focus:border-[#E7E7EB] transition duration-300 font-[500] cursor-pointer"} onClick={handleSelect}>
+          {/* select */}
+          <div id="select"
+            className={selectStyle + " flex items-center justify-between px-4 py-2 mb-3 border border-[#616475] focus:outline-none bg-transparent min-h-[48px] w-full focus:border-[#E7E7EB] transition duration-300 font-[500] cursor-pointer"} onClick={handleSelect}>
             {selectedLocation}
-            <img id="img-select" className={imgStyle + " transition duration-300 h-[24px] p-[4px]"} src="deploy.svg" alt="Deploy icon" />
+            <img src="deploy.svg" alt="Deploy icon" id="img-select"
+              className={imgStyle + " transition duration-300 h-[24px] p-[4px]"} />
           </div>
+          {/* options */}
           {selected && <>
             {locations && locations.map(location => (
-              <Location key={location.latitude} location={location.name} setLocation={setSelectedLocation}
-                coordinates={{ latitude: location.latitude, longitude: location.longitude }} />
+              <Location key={location.latitude} location={location.name}
+                setLocation={setSelectedLocation}
+                coordinates={{
+                  latitude: location.latitude,
+                  longitude: location.longitude
+                }} />
             ))}
           </>}
         </div>}
