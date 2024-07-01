@@ -1,11 +1,12 @@
 import { createContext, useEffect, useState } from "react"
-import data from '../data.json'
-import filterData from "../services/filterData"
+import getDate from "../services/getDate"
+import getGPSLocation from "../services/getGPSLocation"
+import fetchWeather from "../services/fetchWeather"
+import fetchForecast from "../services/fetchForecast"
 
 export const WeatherContext = createContext()
 
-const BASE_URL = import.meta.env.VITE_BASE_URL
-const API_KEY = import.meta.env.VITE_API_KEY
+
 const WeatherProvider = ({ children }) => {
   const [location, setLocation] = useState({})
   const [weather, setWeather] = useState({})
@@ -13,57 +14,31 @@ const WeatherProvider = ({ children }) => {
   const [showModal, setShowModal] = useState(false)
   const [unit, setUnit] = useState('C')
   const [today, setToday] = useState(0)
+  const [forecast, setForecast] = useState([])
 
-  useEffect(() => {
-    const date = new Date()
-    const day = date
-      .toLocaleDateString('en-US', { weekday: 'long' })
-      .slice(0, 3)
-    const dayNumber = date.getDate()
-    const month = date.toLocaleDateString('en-US', { month: 'long' })
-      .slice(0, 3)
-    const completeDate = day + ', ' + dayNumber + ' ' + month
-    setToday(completeDate)
-  }, [])
-
-  const getData = async () => {
-    if (!location.latitude || !location.longitude) {
-      return
-    }
-    const locationUrl = 'lat=' + location.latitude + '&lon=' + location.longitude
-    const currentUnit = unit === 'C' ? 'metric' :
-      unit === 'F' ? 'imperial' : 'standard'
-    const url = BASE_URL + locationUrl +
-      '&appid=' + API_KEY + '&units=' + currentUnit
-    // const rawRes = await fetch(url)
-    // const res = await rawRes.json()
-    setWeather(filterData(data))
+  // weather
+  const getWeather = async () => {
+    if (!location.latitude || !location.longitude) { return }
+    let res = await fetchWeather(unit, location)
+    setWeather(res)
+    res = await fetchForecast(unit, location)
+    setForecast(res)
   }
+  useEffect(() => { getWeather() }, [location, unit])
 
+  // location / date
+  const getLocation = async () => {
+    const loc = await getGPSLocation()
+    setLocation(loc)
+  }
   useEffect(() => {
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        setLocation({
-          latitude: position.coords.latitude,
-          longitude: position.coords.longitude
-        })
-      },
-      (error) => {
-        setLocation({
-          latitude: -0.9535488,
-          longitude: -80.7174144
-        })
-      }
-    )
+    setToday(getDate())
+    getLocation()
   }, [])
-
-  useEffect(() => {
-    getData()
-  }, [location])
 
   return (
     <WeatherContext.Provider value={{
-      weather, loading, setLoading, showModal, setShowModal,
+      weather, forecast, loading, setLoading, showModal, setShowModal,
       unit, setUnit, location, today
     }}>
       {children}

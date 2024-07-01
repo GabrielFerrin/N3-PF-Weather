@@ -18,7 +18,7 @@ function SideBar() {
           </div>
         </div>
         {/* hero */}
-        <div className="h-[325px] w-full bg-cover bg-no-repeat bg-center p-[3rem] mt-6"
+        <div className="h-[325px] w-full bg-cover bg-no-repeat bg-center p-[5rem] mt-6"
           style={{ backgroundImage: 'url(cloud-background.svg)' }}>
           <img src={weather.icon} alt="Weather icon"
             className="object-contain w-full h-full relative" />
