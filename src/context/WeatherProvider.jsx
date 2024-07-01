@@ -85,7 +85,7 @@ const WeatherProvider = ({ children }) => {
       weather, forecast, loading, setLoading, showModal, setShowModal,
       unit, setUnit, location: geoLocation, today, setLocation, locations,
       setGeoLocation, showCoordinates, setShowCoordinates, showError,
-      setShowError, setTryCoordinate
+      setShowError, setTryCoordinate, getLocation
     }}>
       {children}
     </WeatherContext.Provider>
