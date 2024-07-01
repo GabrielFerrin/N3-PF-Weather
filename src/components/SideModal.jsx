@@ -66,6 +66,7 @@ function SideModal() {
         <input className="bg-[#3C47E9] text-[16px] w-[136px] h-[48px] font-[600] hover:bg-[#E7E7EB] hover:text-[#555555] active:bg-[#b5b5bb] transition duration-300 custom-md:w-auto"
           type="button" value="Search" onClick={handleClick} />
       </div>
+      {/* search results */}
       {locations.length > 0 &&
         <div className="w-full flex flex-col">
           <div id="select" className={selectStyle + " flex items-center justify-between px-4 py-2 mb-3 border border-[#616475] focus:outline-none bg-transparent min-h-[48px] w-full focus:border-[#E7E7EB] transition duration-300 font-[500] cursor-pointer"} onClick={handleSelect}>

@@ -26,7 +26,7 @@ function Coordinates() {
       <input className={twStyle} ref={longitud}
         type="number" placeholder="longitude" />
       <input onClick={handleClick}
-        className="bg-[#3C47E9] text-[16px] w-[100%] h-[48px] font-[600] hover:bg-[#E7E7EB] hover:text-[#555555] active:bg-[#b5b5bb] transition duration-300 bg-opacity-50"
+        className="bg-[#3C47E9] text-[16px] w-[100%] h-[48px] font-[600] hover:bg-[#E7E7EB] hover:text-[#555555] active:bg-[#b5b5bb] transition duration-300 bg-opacity-90"
         type="button" value="Search" />
     </div>
   )
