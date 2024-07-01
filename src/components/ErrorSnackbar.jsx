@@ -16,8 +16,8 @@ function ErrorSnackbar({ message }) {
         display: showError ? 'flex' : 'none',
         animation: 'fade 6s ease-out forwards'
       }}>
-      <span className="ml-[-30px]">{message}</span>
-      <div className="absolute right-5 top-[17px]">
+      <span className="ml-[-40px]">{message}</span>
+      <div className="absolute right-7 top-[17px]">
         <Close small={true} action={handleAction} />
       </div>
     </div>
