@@ -1,11 +1,24 @@
-import { useContext, useEffect, useState } from "react"
+import { useContext, useEffect, useRef, useState } from "react"
 import { WeatherContext } from "../context/WeatherProvider"
+import Location from "./Location"
 
 function SideModal() {
-  const { showModal, setShowModal } = useContext(WeatherContext)
+  const { showModal, setShowModal, setLocation, locations } =
+    useContext(WeatherContext)
   const [selected, setSelected] = useState(false)
+  const [selectedLocation, setSelectedLocation] =
+    useState('')
   const [selectStyle, setSelectStyle] = useState('')
   const [imgStyle, setImgStyle] = useState('')
+  const input = useRef(null)
+
+  useEffect(() => {
+    const content = locations.length ?
+      'choose from this list...' :
+      'search to obtain locations...'
+    setSelectedLocation(content)
+  }, [locations])
+
   useEffect(() => {
     selected ? setSelectStyle('border-[#E7E7EB]') : setSelectStyle('')
     selected ? setImgStyle('transform rotate-90') : setImgStyle('')
@@ -22,6 +35,16 @@ function SideModal() {
       setImgStyle('')
     }
   }
+  const handleClick = () => {
+    setLocation(input.current.value.trim())
+    input.current.value = ''
+  }
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      handleClick()
+    }
+  }
 
   return (
     <div className="absolute w-[459px] h-full max-h-[1100px] bg-[#1E213A] min-h-screen p-[42px] flex items-center flex-col gap-[1.5rem] custom-md:w-auto custom-xs:w-[100%] transition duration-300" style={{
@@ -33,30 +56,25 @@ function SideModal() {
       </div >
       <div className="w-full flex gap-4 custom-md:flex-col">
         <div className="relative">
-          <input className="pl-12 pr-4 border border-[#616475] focus:outline-none bg-transparent h-[48px] w-full focus:border-[#E7E7EB] transition duration-300 font-[500] [#616475]::placeholder" type="text" placeholder="search location" />
-          <img className="absolute w-[24px] p-[3px] top-1/2 translate-y-[-50%] left-4" src="lupa.svg" alt="Search icon" />
+          <input className="pl-12 pr-4 border border-[#616475] focus:outline-none bg-transparent h-[48px] w-full focus:border-[#E7E7EB] transition duration-300 font-[500] [#616475]::placeholder"
+            type="text" placeholder="search location" ref={input} onKeyDown={handleKeyDown} />
+          <img className="absolute w-[24px] p-[3px] top-1/2 translate-y-[-50%] left-4"
+            src="lupa.svg" alt="Search icon" />
         </div>
-        <input type="button" value="Search" className="bg-[#3C47E9] text-[16px] w-[136px] h-[48px] font-[600] custom-md:w-auto" />
+        <input className="bg-[#3C47E9] text-[16px] w-[136px] h-[48px] font-[600] custom-md:w-auto"
+          type="button" value="Search" onClick={handleClick} />
       </div>
       <div className="w-full flex flex-col">
-        <div id="select" className={selectStyle + " flex items-center justify-between px-4 border border-[#616475] focus:outline-none bg-transparent h-[48px] w-full focus:border-[#E7E7EB] transition duration-300 font-[500] cursor-pointer"} onClick={handleSelect}>
-          London
+        <div id="select" className={selectStyle + " flex items-center justify-between px-4 py-2 mb-3 border border-[#616475] focus:outline-none bg-transparent min-h-[48px] w-full focus:border-[#E7E7EB] transition duration-300 font-[500] cursor-pointer"} onClick={handleSelect}>
+          {selectedLocation}
           <img id="img-select" className={imgStyle + " transition duration-300 h-[24px] p-[4px]"} src="deploy.svg" alt="Deploy icon" />
-        </div >
-        {
-          selected &&
-          <>
-            <div className="flex items-center px-6 border border-[#1E213A] hover:border hover:border-[#616475]  h-[48px]  font-[500] cursor-pointer text-[#A09FB1] transition duration-300">
-              London
-            </div>
-            <div className="flex items-center px-6 border border-[#1E213A] hover:border hover:border-[#616475]  h-[48px]  font-[500] cursor-pointer text-[#A09FB1] transition duration-300">
-              Barcelona
-            </div>
-            <div className="flex items-center px-6 border border-[#1E213A] hover:border hover:border-[#616475]  h-[48px]  font-[500] cursor-pointer text-[#A09FB1] transition duration-300">
-              Long Beach
-            </div>
-          </>
-        }
+        </div>
+        {selected && <>
+          {locations && locations.map(location => (
+            <Location key={location.latitude} location={location.name} setLocation={setSelectedLocation}
+              coordinates={{ latitude: location.latitude, longitude: location.longitude }} />
+          ))}
+        </>}
       </div>
     </div>
   )

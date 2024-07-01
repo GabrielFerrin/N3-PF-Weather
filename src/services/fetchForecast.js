@@ -1,5 +1,5 @@
 import forecastData from '../forecast-data.json'
-import filterForecastData from './filterForecastData'
+import filterForecastData from './filterForecast'
 
 const FORECAST_URL = import.meta.env.VITE_FORECAST_URL
 const API_KEY = import.meta.env.VITE_API_KEY

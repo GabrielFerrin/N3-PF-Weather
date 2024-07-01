@@ -1,4 +1,4 @@
-import filterWeatherData from "./filterWeatherData"
+import filterWeatherData from "./filterWeather"
 import weatherData from '../weather-data.json'
 
 const WEATHER_URL = import.meta.env.VITE_WEATHER_URL

@@ -1,0 +1,46 @@
+[
+  {
+    "name": "Manta",
+    "lat": 44.6158717,
+    "lon": 7.4870199,
+    "country": "IT",
+    "state": "Piedmont"
+  },
+  {
+    "name": "Manta",
+    "local_names": {
+      "en": "Manta",
+      "ru": "Манта",
+      "uk": "Манта",
+      "es": "Manta"
+    },
+    "lat": -0.9517612,
+    "lon": -80.713859,
+    "country": "EC",
+    "state": "Manabí"
+  },
+  {
+    "name": "Manta",
+    "local_names": {
+      "fr": "Manta",
+      "ru": "Манта"
+    },
+    "lat": 10.3524877,
+    "lon": 1.1106539,
+    "country": "BJ",
+    "state": "Atakora Department"
+  },
+  {
+    "name": "Manta",
+    "lat": -12.6202779,
+    "lon": -75.211004,
+    "country": "PE",
+    "state": "Huancavelica"
+  },
+  {
+    "name": "Manta",
+    "lat": 5.0086703,
+    "lon": -73.5412332,
+    "country": "CO"
+  }
+]
